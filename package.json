@@ -7,6 +7,7 @@
     "url": "git://github.com/my-poc-sandbox/code-style-poc.git"
   },
   "scripts": {
+    "test": "jest",
     "type:check": "tsc",
     "lint:check": "eslint **/*.{js,jsx,json,ts,tsx} --max-warnings=0",
     "format:check": "prettier --check **/*.{js,jsx,json,ts,tsx}",
@@ -20,10 +21,12 @@
   "lint-staged": {
     "**/*.{js,jsx,json,ts,tsx}": [
       "prettier --write",
-      "eslint --max-warnings=0"
+      "eslint --max-warnings=0",
+      "jest --bail --findRelatedTests"
     ]
   },
   "devDependencies": {
+    "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",

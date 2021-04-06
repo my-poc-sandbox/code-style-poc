@@ -14,7 +14,7 @@ describe('component: Header', () => {
     );
   });
 
-  it('only renders title when no subtitle is passed', () => {
+  it('renders only the title when no subtitle is passed', () => {
     const title = 'Test Title';
     const header = shallow(<Header title={title} />);
 

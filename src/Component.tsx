@@ -5,8 +5,6 @@ export interface HeaderProps {
   subtitle?: string;
 }
 
-let x;
-
 export const Header = ({ title, subtitle }: HeaderProps): ReactNode => {
   return (
     <div>

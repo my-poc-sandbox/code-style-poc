@@ -8,14 +8,20 @@
   },
   "scripts": {
     "type:check": "tsc",
-    "lint:check": "eslint **/*.{js,jsx,json,ts,tsx}",
+    "lint:check": "eslint **/*.{js,jsx,json,ts,tsx} --max-warnings=0",
     "format:check": "prettier --check **/*.{js,jsx,json,ts,tsx}",
     "format:fix": "prettier --write **/*.{js,jsx,json,ts,tsx}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn type:check && yarn format:check && yarn lint:check"
+      "pre-commit": "yarn type:check && lint-staged"
     }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,ts,tsx}": [
+      "prettier --write",
+      "eslint --max-warnings=0"
+    ]
   },
   "devDependencies": {
     "@types/react": "^17.0.3",
@@ -28,6 +34,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "4.3.8",
     "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   },

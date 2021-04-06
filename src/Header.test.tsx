@@ -1,5 +1,26 @@
-describe('component:Header', () => {
-  it('should pass', () => {
-    expect(1 + 1).toBe(2);
+import React from 'react';
+import { shallow } from 'enzyme';
+import { Header } from './Header';
+
+describe('component: Header', () => {
+  it('renders the expected title and subtitle', () => {
+    const title = 'Test Title';
+    const subtitle = 'Test Subtitle';
+    const header = shallow(<Header title={title} subtitle={subtitle} />);
+
+    expect(header.find('[data-test-id="header-title"]').text()).toEqual(title);
+    expect(header.find('[data-test-id="header-subtitle"]').text()).toEqual(
+      subtitle,
+    );
+  });
+
+  it('only renders title when no subtitle is passed', () => {
+    const title = 'Test Title';
+    const header = shallow(<Header title={title} />);
+
+    expect(header.find('[data-test-id="header-title"]').text()).toEqual(title);
+    expect(
+      header.find('[data-test-id="header-subtitle"]').exists(),
+    ).toBeFalsy();
   });
 });
